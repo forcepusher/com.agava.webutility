@@ -2,7 +2,7 @@
   
 [Try the Utility demo here.](https://yandex.ru/games/app/192571?draft=true)  
   
-Make sure you have standalone [Git](https://git-scm.com/downloads) installed first.  
+Make sure you have standalone [Git](https://git-scm.com/downloads) installed first. Reboot after installation.  
 In Unity, open "Window" -> "Package Manager".  
 Click the "+" sign on top left corner -> "Add package from git URL..."  
 Paste this: `https://github.com/forcepusher/com.agava.webutility.git#2.0.0`  
