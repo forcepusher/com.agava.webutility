@@ -5,7 +5,7 @@ namespace Agava.WebUtility.Tests
     public class WebApplicationTests
     {
         [Test]
-        public void ShouldReturnNotInBackground()
+        public void InBackgroundShouldReturnFalse()
         {
             Assert.IsFalse(WebApplication.InBackground);
         }
