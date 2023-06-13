@@ -1,11 +1,15 @@
 const library = {
-    
+
     // Class definition.
-  
+
     $webApplication: {
-        setInBackgroundChangeCallback: function (callbackPtr) {
+        initialize: function (onInBackgroundChangeCallbackPtr) {
+            document.addEventListener('pointerdown', function () {
+                window.focus();
+            }); // Fix Unity OnApplicationFocus() callback bug in mobile Chrome-based browsers when running in an iFrame.
+
             document.addEventListener('visibilitychange', function () {
-                dynCall('vi', callbackPtr, [document.hidden]);
+                dynCall('vi', onInBackgroundChangeCallbackPtr, [document.hidden]);
             });
         },
 
@@ -16,8 +20,8 @@ const library = {
 
     // External C# calls.
 
-    SetWebApplicationInBackgroundChangeCallback: function (callbackPtr) {
-        webApplication.setInBackgroundChangeCallback(callbackPtr);
+    WebApplicationInitialize: function (onInBackgroundChangeCallbackPtr) {
+        webApplication.initialize(onInBackgroundChangeCallbackPtr);
     },
 
     GetWebApplicationInBackground: function () {

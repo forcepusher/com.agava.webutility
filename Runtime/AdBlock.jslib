@@ -11,6 +11,14 @@ const library = {
             'ad-lead'
         ],
 
+        initialize: function () {
+            const fakeAdContainer = document.createElement('div');
+            fakeAdContainer.innerHTML = adBlock.fakeAdBannerIds.map(function(fakeAdBannerId) {
+                return '<div id=' + fakeAdBannerId + '></div>'
+            }).join('');
+            document.body.appendChild(fakeAdContainer);
+        },
+
         getEnabled: function () {
             return !adBlock.fakeAdBannerIds.every(function(fakeAdBannerId) {
                 const fakeAdBannerDiv = document.querySelector('#' + fakeAdBannerId);
@@ -18,14 +26,6 @@ const library = {
 
                 return null;
             });
-        },
-
-        initialize: function () {
-            const fakeAdContainer = document.createElement('div');
-            fakeAdContainer.innerHTML = adBlock.fakeAdBannerIds.map(function(fakeAdBannerId) {
-                return '<div id=' + fakeAdBannerId + '></div>'
-            }).join('');
-            document.body.appendChild(fakeAdContainer);
         },
     },
 

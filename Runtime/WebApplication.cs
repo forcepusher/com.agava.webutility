@@ -3,15 +3,17 @@ using System;
 using System.Runtime.InteropServices;
 #if UNITY_WEBGL && !UNITY_EDITOR
 using UnityEngine;
-#endif
+using UnityEngine.Scripting;
 
+[assembly: AlwaysLinkAssembly]
+#endif
 namespace Agava.WebUtility
 {
     public static class WebApplication
     {
         /// <remarks>
         /// Triggers way faster than <see cref="InBackground"/>,<br/>
-        /// but I will break your legs if you forget to unsubscribe from this event.
+        /// but don't forget to unsubscribe from this event.
         /// </remarks>
         public static event Action<bool> InBackgroundChangeEvent;
 
@@ -25,7 +27,7 @@ namespace Agava.WebUtility
         private static extern bool GetWebApplicationInBackground();
 
         [DllImport("__Internal")]
-        private static extern bool SetWebApplicationInBackgroundChangeCallback(Action<bool> callback);
+        private static extern bool WebApplicationInitialize(Action<bool> onInBackgroundChange);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -33,7 +35,7 @@ namespace Agava.WebUtility
         [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Unity InitializeOnLoadMethod")]
         private static void Initialize()
         {
-            SetWebApplicationInBackgroundChangeCallback(OnInBackgroundChange);
+            WebApplicationInitialize(OnInBackgroundChange);
         }
 
         [MonoPInvokeCallback(typeof(Action<bool>))]
