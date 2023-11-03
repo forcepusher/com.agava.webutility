@@ -11,6 +11,21 @@ namespace Agava.WebUtility
 {
     public static class WebApplication
     {
+        /// <summary>
+        /// Use it to check whether you're running the game in the Editor or another platform.
+        /// </summary>
+        public static bool IsRunningOnWebGL
+        {
+            get
+            {
+#if UNITY_WEBGL && !UNITY_EDITOR
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
         /// <remarks>
         /// Triggers way faster than <see cref="InBackground"/>,<br/>
         /// but don't forget to unsubscribe from this event.
