@@ -1,33 +1,33 @@
-const library = {
+const webApplicationLibrary = {
 
-    // Class definition.
+  // Class definition.
 
-    $webApplication: {
-        initialize: function (onInBackgroundChangeCallbackPtr) {
-            document.addEventListener('pointerdown', function () {
-                window.focus();
-            }); // Fix Unity OnApplicationFocus() callback bug in mobile Chrome-based browsers when running in an iFrame.
+  $webApplication: {
+    initialize: function (onInBackgroundChangeCallbackPtr) {
+      document.addEventListener('pointerdown', function () {
+        window.focus();
+      }); // Fix Unity OnApplicationFocus() callback bug in mobile Chrome-based browsers when running in an iFrame.
 
-            document.addEventListener('visibilitychange', function () {
-                dynCall('vi', onInBackgroundChangeCallbackPtr, [document.hidden]);
-            });
-        },
-
-        getInBackground: function () {
-            return document.hidden;
-        },
+      document.addEventListener('visibilitychange', function () {
+        dynCall('vi', onInBackgroundChangeCallbackPtr, [document.hidden]);
+      });
     },
 
-    // External C# calls.
-
-    WebApplicationInitialize: function (onInBackgroundChangeCallbackPtr) {
-        webApplication.initialize(onInBackgroundChangeCallbackPtr);
+    getInBackground: function () {
+      return document.hidden;
     },
+  },
 
-    GetWebApplicationInBackground: function () {
-        return webApplication.getInBackground();
-    },
+  // External C# calls.
+
+  WebApplicationInitialize: function (onInBackgroundChangeCallbackPtr) {
+    webApplication.initialize(onInBackgroundChangeCallbackPtr);
+  },
+
+  GetWebApplicationInBackground: function () {
+    return webApplication.getInBackground();
+  },
 }
 
-autoAddDeps(library, '$webApplication');
-mergeInto(LibraryManager.library, library);
+autoAddDeps(webApplicationLibrary, '$webApplication');
+mergeInto(LibraryManager.library, webApplicationLibrary);

@@ -12,6 +12,11 @@ namespace Agava.WebUtility
     public static class WebApplication
     {
         /// <summary>
+        /// Enable it to log SDK callbacks in the console.
+        /// </summary>
+        public static bool CallbackLogging = false;
+
+        /// <summary>
         /// Use it to check whether you're running the game in the Editor or another platform.
         /// </summary>
         public static bool IsRunningOnWebGL

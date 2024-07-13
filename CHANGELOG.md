@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
   
+## [3.2.0] - 2024-07-13  
+### Added  
+- Added `Clipboard.Write()` and `Clipboard.Read()` methods. Be aware it doesn't work on Yandex Games and most other publishing platforms. These are for publishing the game yourself.  
+  
 ## [3.1.0] - 2023-11-03  
 ### Added  
 - Added `WebApplication.IsRunningOnWebGL` property and improved `Device.IsMobile` to work in the Editor.  
@@ -25,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed `WebApplication.InBackgroundChange` to `WebApplication.InBackgroundChangeEvent`.  
 - Recommended to use both `AudioListener.pause` and `AudioListener.volume` muting methods in `PlaytestingCanvas`.  
   
+[3.2.0] https://github.com/forcepusher/com.agava.webutility/compare/3.1.0...3.2.0  
 [3.1.0] https://github.com/forcepusher/com.agava.webutility/compare/3.0.0...3.1.0  
 [3.0.0] https://github.com/forcepusher/com.agava.webutility/compare/2.2.0...3.0.0  
 [2.2.0] https://github.com/forcepusher/com.agava.webutility/compare/2.1.0...2.2.0  
