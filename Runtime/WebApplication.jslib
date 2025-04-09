@@ -9,7 +9,7 @@ const webApplicationLibrary = {
       }); // Fix Unity OnApplicationFocus() callback bug in mobile Chrome-based browsers when running in an iFrame.
 
       document.addEventListener('visibilitychange', function () {
-        dynCall('vi', onInBackgroundChangeCallbackPtr, [document.hidden]);
+        {{{ makeDynCall('vi', 'onInBackgroundChangeCallbackPtr') }}}(document.hidden);
       });
     },
 

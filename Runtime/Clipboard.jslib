@@ -10,7 +10,7 @@ const clipboardLibrary = {
       }
 
       navigator.clipboard.writeText(clipboardText).then(function () {
-        dynCall('v', successCallbackPtr, []);
+        {{{ makeDynCall('v', 'successCallbackPtr') }}}();
       }).catch(function (error) {
         clipboard.invokeErrorCallback(error, errorCallbackPtr);
       });
@@ -24,7 +24,7 @@ const clipboardLibrary = {
 
       navigator.clipboard.readText().then(function (clipboardText) {
         const clipboardTextUnmanagedStringPtr = clipboard.allocateUnmanagedString(clipboardText);
-        dynCall('vi', successCallbackPtr, [clipboardTextUnmanagedStringPtr]);
+        {{{ makeDynCall('vi', 'successCallbackPtr') }}}(clipboardTextUnmanagedStringPtr);
         _free(clipboardTextUnmanagedStringPtr);
       }).catch(function (error) {
         clipboard.invokeErrorCallback(error, errorCallbackPtr);
@@ -40,7 +40,7 @@ const clipboardLibrary = {
       }
 
       const errorUnmanagedStringPtr = clipboard.allocateUnmanagedString(errorMessage);
-      dynCall('vi', errorCallbackPtr, [errorUnmanagedStringPtr]);
+      {{{ makeDynCall('vi', 'errorCallbackPtr') }}}(errorUnmanagedStringPtr);
       _free(errorUnmanagedStringPtr);
     },
 
