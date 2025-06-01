@@ -1,9 +1,9 @@
 {
   "name": "com.agava.webutility",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "displayName": "Web Utility",
   "type": "library",
-  "unity": "2021.3",
+  "unity": "2022.3",
   "description": "Tools that fix common issues in Unity WebGL export.",
   "license": "MIT",
   "samples": [

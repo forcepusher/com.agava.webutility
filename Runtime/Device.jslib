@@ -3,9 +3,13 @@ const deviceLibrary = {
   // Class definition.
 
   $device: {
+    isMobileDevice: undefined,
+
     getIsMobile: function () {
-      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
-      return isMobileDevice;
+      if (device.isMobileDevice === undefined)
+        device.isMobileDevice = navigator.maxTouchPoints > 0 && !!document.createElement('canvas').getContext('webgl').getExtension('WEBGL_compressed_texture_etc2');
+
+      return device.isMobileDevice;
     },
   },
 
